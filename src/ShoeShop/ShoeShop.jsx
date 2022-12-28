@@ -126,28 +126,48 @@ export default class ShoeShop extends Component {
     }
   ]
 
+  state = {
+      shoeCT: {
+        id: 1,
+        name: "Adidas Prophere",  
+        alias: "adidas-prophere",
+        price: 350,
+        description: "The adidas Primeknit upper wraps the foot with a supportive fit that enhances movement.\r\n\r\n",
+        shortDescription: "The midsole contains 20% more Boost for an amplified Boost feeling.\r\n\r\n",
+        quantity: 995,
+        image: "http://svcy3.myclass.vn/images/adidas-prophere.png"
+      }   
+  }
   
+  xemThongTinCT = (thongTinCT) => {
+    let newState = {
+      shoeCT: thongTinCT
+    }
+
+    this.setState(newState);
+  }
+
   render() {
     return (
       <div className='container-fluid py-5'>
         <div className="row">
           <div className="col-4 d-flex">
-            <ul className="nav flex-column" style={{ position: 'fixed' }}>
+            <ul className="nav flex-column" style={{ position: 'fixed', fontSize:'1.5rem' }}>
               <li className="nav-item">
-                <a className="nav-link active" href="#">Home</a>
+                <a className="nav-link active" href="#" style={{ color: 'black'}}>Home</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Shop</a>
+                <a className="nav-link" href="#" style={{ color: 'black'}}>Shop</a>
               </li>
             </ul>
           </div>
           <div className="col-8">
             <h1 className='text-center'>Shoe Shop</h1>
-            <ShoeList shoeList={this.shoeList}/>
+            <ShoeList shoeList={this.shoeList} xemThongTinCT={this.xemThongTinCT}/>
           </div>
         </div>
 
-        <ThongTinChiTiet/>
+        <ThongTinChiTiet shoeCT={this.state.shoeCT} />
 
       </div>
     )
